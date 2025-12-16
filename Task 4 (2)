@@ -1,0 +1,4 @@
+n = int(input())
+start = min(1, n)
+end = max(1, n)
+print(sum(range(start, end + 1)))
