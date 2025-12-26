@@ -1,14 +1,8 @@
-import sys
+n, m = map(int, input().split())
+text = input().strip()
 
-def main():
-    n, m = map(int, sys.stdin.readline().split())
-    s = sys.stdin.readline().strip()
+words = set()
+for i in range(len(text) - m + 1):
+    words.add(text[i:i+m])
 
-    seen = set()
-    for i in range(n - m + 1):
-        seen.add(s[i:i+m])
-
-    print(len(seen))
-
-if __name__ == "__main__":
-    main()
+print(len(words))
