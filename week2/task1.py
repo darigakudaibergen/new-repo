@@ -1,7 +1,8 @@
 import sys
 
 def main():
-    s = sys.stdin.readline().strip()
+    s = sys.stdin.readline().strip() //или s = input().strip()
+
     cnt = 0
     for i in range(len(s) - 4):
         sub = s[i:i+5]
