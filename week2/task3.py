@@ -1,22 +1,32 @@
-import sys
+s = input().strip()
 
-def main():
-    s = sys.stdin.readline().strip()
-    a, op, b, _, c = s[0], s[1], s[2], s[3], s[4]
+a = s[0]
+op = s[1]
+b = s[2]
+c = s[4]
 
-    def val(ch):
-        return int(ch) if ch.isdigit() else None
-
-    A, B, C = val(a), val(b), val(c)
-
-    if a == 'x':
-        x = (C - B) if op == '+' else (C + B)
-    elif b == 'x':
-        x = (C - A) if op == '+' else (A - C)
+if a == 'x':
+    B = int(b)
+    C = int(c)
+    if op == '+':
+        x = C - B
     else:
-        x = (A + B) if op == '+' else (A - B)
+        x = C + B
 
-    print(x)
+elif b == 'x':
+    A = int(a)
+    C = int(c)
+    if op == '+':
+        x = C - A
+    else:
+        x = A - C
 
-if __name__ == "__main__":
-    main()
+else:  # c == 'x'
+    A = int(a)
+    B = int(b)
+    if op == '+':
+        x = A + B
+    else:
+        x = A - B
+
+print(x)
