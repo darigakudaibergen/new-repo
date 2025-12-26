@@ -1,38 +1,23 @@
 import sys
 from collections import Counter
 
-def main():
-    items = sys.stdin.read().split()
-    if not items:
-        return
+data = sys.stdin.read().split()
+if not data:
+    sys.exit()
 
-    cnt = Counter(items)
+cnt = Counter(data)
 
-    order = []
-    seen = set()
-    for x in items:
-        if x not in seen:
-            seen.add(x)
-            order.append(x)
+most_popular = cnt.most_common(1)[0][0]
+once = [item for item in cnt if cnt[item] == 1]
+sorted_items = sorted(cnt.items(), key=lambda x: x[1], reverse=True)
 
-    max_count = max(cnt.values())
-    most_popular = None
-    for x in order:
-        if cnt[x] == max_count:
-            most_popular = x
-            break
+print("Purchase frequency:")
+for item, count in cnt.items():
+    print(f"{item}: {count}")
 
-    purchased_once = [x for x in order if cnt[x] == 1]
-    sorted_items = sorted(order, key=lambda x: (-cnt[x], x))
+print(f"Most popular item: {most_popular}")
+print("Purchased once:", " ".join(once))
 
-    print("Purchase frequency:")
-    for x in order:
-        print(f"{x}: {cnt[x]}")
-    print(f"Most popular item: {most_popular}")
-    print("Purchased once:", " ".join(purchased_once))
-    print("Sorted by frequency:")
-    for x in sorted_items:
-        print(f"{x} {cnt[x]}")
-
-if __name__ == "__main__":
-    main()
+print("Sorted by frequency:")
+for item, count in sorted_items:
+    print(f"{item} {count}")
