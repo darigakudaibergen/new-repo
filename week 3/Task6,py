@@ -1,0 +1,28 @@
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def quadrilateral_area(a, b, c, d, diag):
+    def triangle_area(x, y, z):
+        p = (x + y + z) / 2
+        return (p * (p - x) * (p - y) * (p - z)) ** 0.5
+    area1 = triangle_area(a, b, diag)
+    area2 = triangle_area(c, d, diag)
+    return area1 + area2
+
+def main():
+    a = int(input())
+    b = int(input())
+    g = gcd(a, b)
+    lcm = a * b // g
+    print(g, lcm)
+    
+    a = float(input())
+    b = float(input())
+    c = float(input())
+    d = float(input())
+    diag = float(input())
+    print(quadrilateral_area(a, b, c, d, diag))
+
+main()

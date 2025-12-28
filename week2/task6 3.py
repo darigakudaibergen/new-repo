@@ -1,0 +1,10 @@
+from typing import List
+
+def all_eq(items: List[str]) -> List[str]:
+    if not items:
+        return []
+    mx = max(len(s) for s in items)
+    return [s + "_" * (mx - len(s)) for s in items]
+
+if __name__ == "__main__":
+    print(all_eq(["ab", "abc", "a"]))

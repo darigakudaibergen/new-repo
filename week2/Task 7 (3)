@@ -1,0 +1,39 @@
+import sys
+from collections import Counter
+
+def main():
+    items = sys.stdin.read().split()
+    if not items:
+        return
+
+    cnt = Counter(items)
+
+    order = []
+    seen = set()
+    for x in items:
+        if x not in seen:
+            seen.add(x)
+            order.append(x)
+
+    max_count = max(cnt.values())
+    most_popular = None
+    for x in order:
+        if cnt[x] == max_count:
+            most_popular = x
+            break
+
+    purchased_once = [x for x in order if cnt[x] == 1]
+
+    sorted_items = sorted(order, key=lambda x: (-cnt[x], x))
+
+    print("Purchase frequency:")
+    for x in order:
+        print(f"{x}: {cnt[x]}")
+    print(f"Most popular item: {most_popular}")
+    print("Purchased once:", " ".join(purchased_once))
+    print("Sorted by frequency:")
+    for x in sorted_items:
+        print(f"{x} {cnt[x]}")
+
+if __name__ == "__main__":
+    main()

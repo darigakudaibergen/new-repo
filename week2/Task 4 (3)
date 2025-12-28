@@ -1,0 +1,16 @@
+import sys
+
+def main():
+    n_m = sys.stdin.readline().split()
+    n = int(n_m[0])
+    m = int(n_m[1])
+    s = sys.stdin.readline().strip()
+
+    seen = set()
+    for i in range(n - m + 1):
+        seen.add(s[i:i+m])
+
+    print(len(seen))
+
+if __name__ == "__main__":
+    main()
