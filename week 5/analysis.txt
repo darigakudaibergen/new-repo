@@ -1,0 +1,8 @@
+Total lines: 4
+Total words: 7
+Word frequency:
+cool: 1
+hello: 2
+is: 1
+python: 2
+world: 1
